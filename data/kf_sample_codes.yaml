@@ -1,0 +1,14 @@
+ceph_s3:
+  s3tests.functional.test_headers.test_bucket_create_bad_authorization_none: {code: 'alpha',
+    desc: '', status: KNOWN}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_empty: {code: 'alpha',
+    desc: WSGI Content-length handling needs to be worked around, status: KNOWN}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_negative: {
+    code: 'alpha', desc: '', status: KNOWN}
+  s3tests.functional.test_headers.test_object_acl_create_contentlength_none: {code: 'alpha',
+    desc: '', status: KNOWN}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_none: {code: 'beta',
+    desc: 'Needs 403, not 401', status: KNOWN}
+codes:
+  alpha: 'Descrption of alpha error. Blah Blah blah.'
+  beta: 'Description of beta known issue'
