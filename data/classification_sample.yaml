@@ -1,0 +1,359 @@
+tests:
+  s3tests.functional.test_headers.test_object_create_bad_md5_invalid_garbage: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_md5_invalid_short: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_md5_bad: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_md5_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_md5_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_md5_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_expect_mismatch: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_expect_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_expect_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_expect_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_negative: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_mismatch_above: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contentlength_mismatch_below: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contenttype_invalid: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contenttype_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contenttype_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_contenttype_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_ua_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_ua_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_ua_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_invalid: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_authorization_incorrect: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_invalid: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_empty: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_unreadable: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_before_today: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_after_today: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_before_epoch: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_object_create_bad_date_after_end: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_bucket_create_contentlength_none: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_object_acl_create_contentlength_none: {category: 'Object Headers'}
+  s3tests.functional.test_headers.test_bucket_put_bad_canned_acl: {category: 'Bucket Acls'}
+  s3tests.functional.test_headers.test_bucket_create_bad_expect_mismatch: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_expect_empty: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_expect_unreadable: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_empty: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_negative: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_none: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_contentlength_unreadable: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_ua_empty: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_ua_unreadable: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_ua_none: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_authorization_invalid: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_authorization_unreadable: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_authorization_empty: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_authorization_none: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_invalid: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_empty: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_unreadable: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_none: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_before_today: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_after_today: {category: 'Bucket Headers'}
+  s3tests.functional.test_headers.test_bucket_create_bad_date_before_epoch: {category: 'Bucket Headers'}
+  s3tests.functional.test_s3.test_bucket_list_empty: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_distinct: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_many: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_basic: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_prefix: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_alt: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_unreadable: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_empty: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_none: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_delimiter_not_exist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_basic: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_alt: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_empty: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_none: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_not_exist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_unreadable: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_delimiter_basic: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_delimiter_alt: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_delimiter_prefix_not_exist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_delimiter_delimiter_not_exist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_prefix_delimiter_prefix_delimiter_not_exist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_maxkeys_one: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_maxkeys_zero: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_maxkeys_none: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_maxkeys_invalid: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_maxkeys_unreadable: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_none: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_empty: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_unreadable: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_not_in_list: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_after_list: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_marker_before_list: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_return_data: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_list_object_time: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_notexist: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_delete_notexist: {category: 'Bucket Delete'}
+  s3tests.functional.test_s3.test_bucket_delete_nonempty: {category: 'Bucket Delete'}
+  s3tests.functional.test_s3.test_object_write_to_nonexist_bucket: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_bucket_create_delete: {category: 'Bucket Delete'}
+  s3tests.functional.test_s3.test_object_read_notexist: {category: 'Object Get'}
+  s3tests.functional.test_s3.test_object_create_special_characters: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_object_create_unreadable: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_multi_object_delete: {category: 'Object Delete'}
+  s3tests.functional.test_s3.test_object_write_check_etag: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_write_cache_control: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_write_expires: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_write_read_update_read_delete: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_none_to_good: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_none_to_empty: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_overwrite_to_good: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_overwrite_to_empty: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_unicode_metadata: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_non_utf8_metadata: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_empty_to_unreadable_prefix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_empty_to_unreadable_suffix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_empty_to_unreadable_infix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_overwrite_to_unreadable_prefix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_overwrite_to_unreadable_suffix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_set_get_metadata_overwrite_to_unreadable_infix: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_metadata_replaced_on_put: {category: 'Object Metadata'}
+  s3tests.functional.test_s3.test_object_write_file: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_post_object_anonymous_request: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_post_object_authenticated_request: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_authenticated_request_bad_access_key: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_set_success_code: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_post_object_set_invalid_success_code: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_post_object_upload_larger_than_chunk: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_set_key_from_filename: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_ignored_header: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_case_insensitive_condition_fields: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_escaped_field_values: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_success_redirect_action: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_invalid_signature: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_invalid_access_key: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_invalid_date_format: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_no_key_specified: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_missing_signature: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_missing_policy_condition: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_user_specified_header: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_request_missing_policy_specified_field: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_condition_is_case_sensitive: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_expires_is_case_sensitive: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_expired_policy: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_invalid_request_field_value: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_missing_expires_condition: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_missing_conditions_list: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_upload_size_limit_exceeded: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_missing_content_length_argument: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_invalid_content_length_argument: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_post_object_upload_size_below_minimum: {category: 'Object Post'}
+  s3tests.functional.test_s3.test_put_object_ifmatch_good: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifmatch_failed: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifmatch_overwrite_existed_good: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifmatch_nonexisted_failed: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifnonmatch_good: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifnonmatch_failed: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifnonmatch_nonexisted_good: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_put_object_ifnonmatch_overwrite_existed_failed: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_object_raw_get: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_get_bucket_gone: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_delete_key_bucket_gone: {category: 'Object Delete'}
+  s3tests.functional.test_s3.test_object_raw_get_object_gone: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_head: {category: 'Bucket Head'}
+  s3tests.functional.test_s3.test_bucket_head_extended: {category: 'Bucket Head'}
+  s3tests.functional.test_s3.test_object_raw_get_bucket_acl: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_raw_get_object_acl: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_authenticated: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_response_headers: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_authenticated_bucket_acl: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_raw_authenticated_object_acl: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_authenticated_bucket_gone: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_raw_authenticated_object_gone: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_put: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_put_write_access: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_raw_put_authenticated: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_object_raw_put_authenticated_expired: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_starts_nonalpha: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_short_empty: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_short_one: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_short_two: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_long: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_250: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_251: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_252: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_253: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_254: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_long_255: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_list_long_name: {category: 'Object List'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_ip: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_bad_punctuation: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_underscore: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_long: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_dash_at_end: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_dot_dot: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_dot_dash: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_naming_dns_dash_dot: {category: 'Bucket Put Naming'}
+  s3tests.functional.test_s3.test_bucket_create_exists: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_get_location: {category: 'Bucket Get'}
+  s3tests.functional.test_s3.test_bucket_create_exists_nonowner: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_delete_nonowner: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_default: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_canned_during_create: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_canned: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_canned_publicreadwrite: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_canned_authenticatedread: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_acl_default: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned_during_create: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned_publicreadwrite: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned_authenticatedread: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned_bucketownerread: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_canned_bucketownerfullcontrol: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_full_control_verify_owner: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_canned_private_to_private: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_xml_fullcontrol: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_xml_write: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_xml_writeacp: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_xml_read: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_xml_readacp: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_acl_xml: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_xml_write: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_xml_writeacp: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_xml_read: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_acl_xml_readacp: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_userid_fullcontrol: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_userid_read: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_userid_readacp: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_userid_write: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_userid_writeacp: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_nonexist_user: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_no_grants: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_object_header_acl_grants: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_header_acl_grants: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_email: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_grant_email_notexist: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_bucket_acl_revoke_all: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_logging_toggle: {category: 'Bucket Logging'}
+  s3tests.functional.test_s3.test_access_bucket_private_object_private: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_private_object_publicread: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_private_object_publicreadwrite: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicread_object_private: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicread_object_publicread: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicread_object_publicreadwrite: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicreadwrite_object_private: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicreadwrite_object_publicread: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_access_bucket_publicreadwrite_object_publicreadwrite: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_set_valid_acl: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_giveaway: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_buckets_create_then_list: {category: 'Bucket List'}
+  s3tests.functional.test_s3.test_list_buckets_anonymous: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_list_buckets_invalid_auth: {category: 'Bucket List'}
+  s3tests.functional.test_s3.test_list_buckets_bad_auth: {category: 'Bucket List'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_starts_alpha: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_starts_digit: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_contains_period: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_create_naming_good_contains_hyphen: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_recreate_not_overriding: {category: 'Bucket Put'}
+  s3tests.functional.test_s3.test_bucket_create_special_key_names: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_bucket_list_special_prefix: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_object_copy_zero_size: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_same_bucket: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_to_itself: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_to_itself_with_metadata: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_diff_bucket: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_not_owned_bucket: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_not_owned_object_bucket: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_copy_canned_acl: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_object_copy_retaining_metadata: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_object_copy_replacing_metadata: {category: 'Object Copy'}
+  s3tests.functional.test_s3.test_multipart_upload_empty: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_small: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_resend_part: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_multiple_sizes: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_size_too_small: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_contents: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_overwrite_existing_object: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_abort_multipart_upload: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_abort_multipart_upload_not_found: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_list_multipart_upload: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_missing_part: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_multipart_upload_incorrect_etag: {category: 'Object Put Multipart'}
+  s3tests.functional.test_s3.test_100_continue: {category: 'Object Acls'}
+  s3tests.functional.test_s3.test_bucket_acls_changes_persistent: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_stress_bucket_acls_changes: {category: 'Bucket Acls'}
+  s3tests.functional.test_s3.test_set_cors: {category: 'Bucket Cors'}
+  s3tests.functional.test_s3.test_cors_origin_response: {category: 'Bucket Cors'}
+  s3tests.functional.test_s3.test_atomic_read_1mb: {category: 'Object Get'}
+  s3tests.functional.test_s3.test_atomic_read_4mb: {category: 'Object Get'}
+  s3tests.functional.test_s3.test_atomic_read_8mb: {category: 'Object Get'}
+  s3tests.functional.test_s3.test_atomic_write_1mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_write_4mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_write_8mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_dual_write_1mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_dual_write_4mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_dual_write_8mb: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_atomic_conditional_write_1mb: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_atomic_dual_conditional_write_1mb: {category: 'Object Put Conditional'}
+  s3tests.functional.test_s3.test_atomic_write_bucket_gone: {category: 'Object Put'}
+  s3tests.functional.test_s3.test_ranged_request_response_code: {category: 'Object Get Range'}
+  s3tests.functional.test_s3.test_ranged_request_skip_leading_bytes_response_code: {category: 'Object Get Range'}
+  s3tests.functional.test_s3.test_ranged_request_return_trailing_bytes_response_code: {category: 'Object Get Range'}
+  s3tests.functional.test_s3.test_ranged_request_invalid_range: {category: 'Object Get Range'}
+  s3tests.functional.test_s3.check_can_test_multiregion: {category: 'Multiregion'}
+  s3tests.functional.test_s3.test_region_bucket_create_secondary_access_remove_master: {category: 'Multiregion'}
+  s3tests.functional.test_s3.test_region_bucket_create_master_access_remove_secondary: {category: 'Multiregion'}
+  s3tests.functional.test_s3.test_region_copy_object: {category: 'Multiregion'}
+  s3tests.functional.test_s3.test_versioning_bucket_create_suspend: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_create_read_remove: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_create_read_remove_head: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_suspend_versions: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_suspend_versions_simple: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_create_versions_remove_all: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_create_versions_remove_special_names: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_create_overwrite_multipart: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_obj_list_marker: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_copy_obj_version: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_multi_object_delete: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_multi_object_delete_with_marker: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioning_multi_object_delete_with_marker_create: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioned_object_acl: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioned_concurrent_object_create_concurrent_remove: {category: 'Versioning'}
+  s3tests.functional.test_s3.test_versioned_concurrent_object_create_and_remove: {category: 'Versioning'}
+  s3tests.functional.test_utils.test_generate: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_load_graph: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_descend_leaf_node: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_descend_node: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_descend_bad_node: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_descend_nonexistant_child: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_printable: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_binary: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_printable_no_whitespace: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_binary_no_whitespace: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_no_args: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_no_charset: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_exact_length: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_bad_charset: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_random_missing_length: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_assemble_decision: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_escape: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_indirect: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_indirect_double: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_recursive: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_recursive_mutual: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_recursive_not_too_eager: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_make_choice_unweighted_with_space: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_weighted_choices: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_null_choices: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_weighted_null_choices: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_null_child: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_weighted_set: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_header_presence: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_duplicate_header: {category: 'Non-S3'}
+  s3tests.fuzz.test.test_fuzzer.test_expand_headers: {category: 'Non-S3'}
+  test_realistic.TestFileValidator.test_new_file_is_valid: {category: 'Non-S3'}
+  test_realistic.TestFileValidator.test_new_file_is_valid_on_several_calls: {category: 'Non-S3'}
+  test_realistic.TestFileValidator.test_new_file_is_valid_when_size_is_1: {category: 'Non-S3'}
+  test_realistic.TestFiles.test_random_file_valid: {category: 'Non-S3'}

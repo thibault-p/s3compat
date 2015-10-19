@@ -163,7 +163,8 @@ def get_row(name, elements, totals, results, codes, all_codes):
     return row
 
 
-def detailed_results_table(results, attributes, kfs, codes):
+def detailed_results_table(results, detailed_attributes, custom_attributes,
+                           kfs, codes):
     table = [["Category", 'Pass', 'New Failure',
               'Known Failure', 'Skip', "Pass %", "Tests Passed", 'Notes']]
 
@@ -172,17 +173,27 @@ def detailed_results_table(results, attributes, kfs, codes):
     results = results.copy()
     all_codes = set()
 
-    flag_table = []
-    if 'flags' in attributes:
-        for flag in sorted(attributes['flags']):
-            row = get_row(flag, attributes['flags'][flag],
-                          totals, results, codes, all_codes)
-            flag_table.append(row)
+    custom_attributes_table = []
+    if custom_attributes:
+        for custom_attribute in sorted(custom_attributes):
+            row = get_row(custom_attribute,
+                          custom_attributes[custom_attribute], totals, results,
+                          codes, all_codes)
+            custom_attributes_table.append(row)
 
-    for method in sorted(attributes['method'], key=str.lower):
-        for resource in sorted(attributes['resource'], key=str.lower):
-            intersection = (attributes['method'][method].
-                            intersection(attributes['resource'][resource]))
+    flag_table = []
+    if 'flags' in detailed_attributes:
+        for flag in sorted(detailed_attributes['flags']):
+            row = get_row(flag, detailed_attributes['flags'][flag],
+                          totals, results, codes, all_codes)
+            if row[5] != 'N/A':
+                flag_table.append(row)
+
+    for method in sorted(detailed_attributes['method'], key=str.lower):
+        for resource in sorted(detailed_attributes['resource'], key=str.lower):
+            intersection = (detailed_attributes['method'][method].
+                            intersection(detailed_attributes['resource']
+                            [resource]))
             if intersection:
                 old_length = len(results)
                 row = get_row("%s %s" % (method, resource), intersection,
@@ -191,9 +202,10 @@ def detailed_results_table(results, attributes, kfs, codes):
                     table.append(row)
 
     table += flag_table
-
+    table += custom_attributes_table
     row = get_row("other", results.copy(), totals, results, codes, all_codes)
-    table.append(row)
+    if row[5] != 'N/A':
+        table.append(row)
 
     table.append(["Total"] + (list(totals[result_type] for result_type
                               in result_types) + result_passed(totals['PASS'],
@@ -202,16 +214,20 @@ def detailed_results_table(results, attributes, kfs, codes):
     return table
 
 
-def detailed_report_console(results, attributes, kfs, codes):
-    table = detailed_results_table(results, attributes, kfs, codes)
+def detailed_report_console(results, detailed_attributes, custom_attributes,
+                            kfs, codes):
+    table = detailed_results_table(results, detailed_attributes,
+                                   custom_attributes, kfs, codes)
     # Hide Notes column
     columns = (True, True, True, True, True, True, True, False)
     table = [[v for i, v in enumerate(row) if columns[i]] for row in table]
     print tabulate(table, headers="firstrow", tablefmt='simple')
 
 
-def detailed_report_wiki(results, attributes, kfs, codes):
-    table = detailed_results_table(results, attributes, kfs, codes)
+def detailed_report_wiki(results, detailed_attributes, custom_attributes, kfs,
+                         codes):
+    table = detailed_results_table(results, detailed_attributes,
+                                   custom_attributes, kfs, codes)
     columns = (True, False, False, False, False, True, True, True)
 
     table = [[v for i, v in enumerate(row) if columns[i]] for row in table]
@@ -227,6 +243,8 @@ parser.add_argument('-f', '--format', choices=['summary', 'csv'],
                     help='output format', default='summary')
 parser.add_argument('-d', '--detailed',
                     help='output detailed information using attribute file')
+parser.add_argument('-c', '--custom',
+                    help='use custom attributes')
 parser.add_argument('-df', '--detailedformat', choices=['console', 'wiki'],
                     help='output detailed information format',
                     default='console')
@@ -262,21 +280,44 @@ for test, rec in results.iteritems():
 
 codes = all_kfs.get('codes', {})
 
+custom_attributes = {}
+if args.custom:
+    try:
+        with open(args.custom, 'r') as cf:
+            custom_load = yaml.load(cf)['tests']
+    except IOError:
+        print 'Unable to open custom attributes file'
+        raise
+    for test in custom_load:
+        attrib_cat = custom_load[test]['category']
+
+        if attrib_cat:
+            cur_attr = custom_attributes.get(attrib_cat, None)
+            if cur_attr is None:
+                cur_attr = set()
+                custom_attributes[attrib_cat] = cur_attr
+            cur_attr.add(test)
+
+detailed_attributes = {}
 if args.detailed:
     try:
         with open(args.detailed, 'r') as yaml_loading:
-            attributes = yaml.load(yaml_loading)
+            detailed_attributes = yaml.load(yaml_loading)
     except IOError:
         print 'Unable to open detailed results attribute file'
         raise
+
+if args.custom or args.detailed:
+    if args.detailedformat == 'console':
+        detailed_report_console(results, detailed_attributes,
+                                custom_attributes, kfs, codes)
+    elif args.detailedformat == 'wiki':
+        detailed_report_wiki(results, detailed_attributes, custom_attributes,
+                             kfs, codes)
     else:
-        if args.detailedformat == 'console':
-            detailed_report_console(results, attributes, kfs, codes)
-        elif args.detailedformat == 'wiki':
-            detailed_report_wiki(results, attributes, kfs, codes)
-        else:
-            # We should never get here -- argparse should catch errors
-            raise ValueError("format must be 'console' or 'wiki'")
+        # We should never get here -- argparse should catch errors
+        raise ValueError("format must be 'console' or 'wiki'")
+
 if args.format == 'summary':
     summary_report(results, args.detailed)
 elif args.format == 'csv':

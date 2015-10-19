@@ -56,7 +56,7 @@ The xml output file will be placed in "./output/ceph-s3.out.xml".
 Reporting
 ---------------------------
 
-Generate Test Attributes File:
+Generate test attributes file:
 
     bin/get_ceph_test_attributes.py
 
@@ -67,9 +67,15 @@ Generate detailed report:
 
     ./bin/report.py -d output/ceph-s3.out.yaml -df console output/ceph-s3.out.xml
 
+
 Generate report with mediawiki formatted table:
 
     ./bin/report.py -d output/ceph-s3.out.yaml -df wiki output/ceph-s3.out.xml
 
 
+Generate detailed report with custom attributes:
+
+    ./bin/report.py -d output/ceph-s3.out.yaml -df console output/ceph-s3.out.xml -c data/classification_sample.yaml
+
+A sample custom attribute file is providing, classifying ceph-s3 tests into categories.
 
