@@ -77,5 +77,5 @@ Generate detailed report with custom attributes:
 
     ./bin/report.py -d output/ceph-s3.out.yaml -df console output/ceph-s3.out.xml -c data/classification_sample.yaml
 
-A sample custom attribute file is providing, classifying ceph-s3 tests into categories.
+A sample custom attribute file is provided, classifying ceph-s3 tests into categories.
 
