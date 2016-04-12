@@ -20,4 +20,5 @@ os.chdir(os.path.join(test_root, "ceph-tests"))
 sys.argv = (sys.argv[:1] +
             ['--with-xunit', '--xunit-file=../output/ceph-s3.out.xml'] +
             sys.argv[1:])
-nose.run()
+if not nose.run():
+    exit(1)
