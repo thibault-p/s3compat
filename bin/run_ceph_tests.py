@@ -3,7 +3,7 @@ import nose
 import os
 import sys
 
-os.environ['S3TEST_CONF'] = '../config/ceph-s3.cfg'
+os.environ.setdefault('S3TEST_CONF', '../config/ceph-s3.cfg')
 
 base = os.path.basename(__file__)
 
