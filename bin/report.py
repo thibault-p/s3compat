@@ -9,7 +9,7 @@ import yaml
 import sys
 import csv
 
-result_types = ('PASS', 'NEW_FAILURE', 'KNOWN_FAILURE', 'SKIP',)
+result_types = ('PASS', 'NEW_FAILURE', 'KNOWN_FAILURE', 'UNEXPECTED_PASS', 'SKIP',)
 
 
 def dict_merge(a, b):
@@ -88,6 +88,7 @@ def csv_report(results):
 
 
 def summary_report(results, detailed):
+    success = True
     by_report_status = defaultdict(list)
     for test, rec in results.iteritems():
         by_report_status[rec.get('report')].append(rec)
@@ -97,7 +98,7 @@ def summary_report(results, detailed):
 
     if not detailed:
         table = []
-        for s in ('PASS', 'NEW_FAILURE', 'KNOWN_FAILURE', 'SKIP'):
+        for s in ('PASS', 'NEW_FAILURE', 'KNOWN_FAILURE', 'UNEXPECTED_PASS', 'SKIP'):
             table.append((s, len(by_report_status[s])))
 
         print tabulate(table)
@@ -112,10 +113,15 @@ def summary_report(results, detailed):
             results.items(),
             key=lambda x: float(x[1]['time']),
             reverse=True)[:10])
-    print
-    print "NEW_FAILURE:"
-    for test in by_report_status['NEW_FAILURE']:
-        print test['name']
+    for status in ('NEW_FAILURE', 'UNEXPECTED_PASS'):
+        if not by_report_status[status]:
+            continue
+        success = False
+        print
+        print "%s:" % status
+        for test in by_report_status[status]:
+            print test['name']
+    return success
 
 
 def result_passed(passed, total):
@@ -166,7 +172,7 @@ def get_row(name, elements, totals, results, codes, all_codes):
 def detailed_results_table(results, detailed_attributes, custom_attributes,
                            kfs, codes):
     table = [["Category", 'Pass', 'New Failure',
-              'Known Failure', 'Skip', "Pass %", "Tests Passed", 'Notes']]
+              'Known Failure', 'Unexp. Pass', 'Skip', "Pass %", "Tests Passed", 'Notes']]
 
     totals = dict.fromkeys(result_types, 0)
 
@@ -218,9 +224,11 @@ def detailed_report_console(results, detailed_attributes, custom_attributes,
                             kfs, codes):
     table = detailed_results_table(results, detailed_attributes,
                                    custom_attributes, kfs, codes)
-    # Hide Notes column
-    columns = (True, True, True, True, True, True, True, False)
-    table = [[v for i, v in enumerate(row) if columns[i]] for row in table]
+    # Hide Notes column, and only show new failure/known failure/unexp. pass/skip if there's data
+    columns = (True, True, None, None, None, None, True, True, False)
+    table = [[v for i, v in enumerate(row)
+             if (table[-1][i] if columns[i] is None
+                 else columns[i])] for row in table]
     print tabulate(table, headers="firstrow", tablefmt='simple')
 
 
@@ -277,6 +285,8 @@ for test, rec in results.iteritems():
         status = kfs[test]['status']
         if status == 'KNOWN':
             rec['report'] = 'KNOWN_FAILURE'
+    else:
+        rec['report'] = 'UNEXPECTED_PASS'
 
 codes = all_kfs.get('codes', {})
 
@@ -319,7 +329,8 @@ if args.custom or args.detailed:
         raise ValueError("format must be 'console' or 'wiki'")
 
 if args.format == 'summary':
-    summary_report(results, args.detailed)
+    if not summary_report(results, args.detailed):
+        exit(1)
 elif args.format == 'csv':
     csv_report(results)
 else:
