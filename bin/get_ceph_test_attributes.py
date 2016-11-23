@@ -1,84 +1,51 @@
 #!/usr/bin/env python
+import collections
 import nose
 import os
-import sys
-from cStringIO import StringIO
-import contextlib
 import yaml
-import importlib
-
-os.environ['S3TEST_CONF'] = '../config/ceph-s3.cfg'
-
-base = os.path.basename(__file__)
-
-# Run tests from proper directory
-test_root = ""
-if os.path.exists("../bin/"+base):
-    test_root = "../"
-elif os.path.exists("bin/"+base):
-    test_root = "./"
-
-os.chdir(os.path.join(test_root, "ceph-tests"))
 
 
-# Run nose to collect test function names, suppresss output.
-@contextlib.contextmanager
-def capture_output():
-    oldstderr = sys.stderr
-    try:
-        sys.stderr = StringIO()
-        yield sys.stderr
-    finally:
-        sys.stderr = oldstderr
+ATTRS = ('resource', 'method', 'operation', 'assertion')
+FLAGS = ('100_continue', 'multiregion', 'versioning')
 
-with capture_output() as out:
-    nose.run(argv=[base, '--collect-only', '-v'])
 
-# Get attributes of each function, and store them by
-# name.  Have a set for each unique attribute value
-# and save it to a file to be used for reporting later
-nose_output = out.getvalue().split('\n')
+def get_test_info(directory):
+    q = collections.deque(nose.loader.TestLoader().loadTestsFromDir('.'))
+    while q:
+        x = q.popleft()
+        if isinstance(x, nose.suite.ContextSuite):
+            q.extend(x._tests)
+        elif isinstance(x, nose.case.Test):
+            info = {'module': x.test.test.__module__,
+                    'name': x.test.test.__name__,
+                    'full_name': '.'.join(x.test.address()[1:]),
+                    'flags': []}
+            info.update((a, getattr(x.test.test, a))
+                        for a in ATTRS if hasattr(x.test.test, a))
+            info['flags'].extend(f for f in FLAGS if hasattr(x.test.test, f))
+            yield info
+        else:
+            raise TypeError(type(x))
 
-indices = ('resource', 'method', 'operation', 'assertion')
-flags = ('100_continue', 'multiregion', 'versioning')
-attributes = {}
 
-for index in indices:
-    attributes[index] = {}
+# Get tests from proper directory
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
+os.environ['S3TEST_CONF'] = os.path.join(repo_root, 'config', 'ceph-s3.cfg')
+
+attributes = {a: {} for a in ATTRS}
 attributes['flags'] = {}
 
-for flag in flags:
-    attributes['flags'][flag] = set()
-
-for line in nose_output:
-    if not line:
-        break
-    full_function = line.split(' ')[0]
-    full_split = full_function.split('.')
-    size = len(full_split)
-    while size > 1:
-        size -= 1
-        try:
-            module_name = ".".join(full_split[:size])
-            module = importlib.import_module(module_name)
-            cur_funct = getattr(module, '.'.join(full_split[size:]))
-        except (ImportError, AttributeError) as e:
+for info in get_test_info(os.path.join(repo_root, "ceph-tests")):
+    for attr in ATTRS:
+        if attr not in info:
             continue
-        break
-
-    for index in indices:
-        if hasattr(cur_funct, index):
-            current_attribute_value = getattr(cur_funct, index).lower()
-            if current_attribute_value not in attributes[index]:
-                attributes[index][current_attribute_value] = set()
-            attributes[index][current_attribute_value].add(full_function)
-
-    for flag in flags:
-        if hasattr(cur_funct, flag):
-            attributes['flags'][flag].add(full_function)
+        attributes[attr].setdefault(info[attr].lower(), set())
+        attributes[attr][info[attr].lower()].add(info['full_name'])
+    for f in info['flags']:
+        attributes['flags'].setdefault(f, set())
+        attributes['flags'][f].add(info['full_name'])
 
 # Save test attributes
-with open('../output/ceph-s3.out.yaml', 'w') as output:
-    # pickle.dump(attributes, output)
-    yaml.dump(attributes, output)
+with open(os.path.join(repo_root, 'output', 'ceph-s3.out.yaml'), 'w') as fp:
+    yaml.dump(attributes, fp)
