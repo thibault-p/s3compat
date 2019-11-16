@@ -27,7 +27,7 @@ def dict_merge(a, b):
 
 def load_known_failures(kf_fn):
     with open(kf_fn, 'r') as kf_file:
-        return yaml.load(kf_file)
+        return yaml.safe_load(kf_file)
 
 
 def extract_message(node):
@@ -294,7 +294,7 @@ custom_attributes = {}
 if args.custom:
     try:
         with open(args.custom, 'r') as cf:
-            custom_load = yaml.load(cf)['tests']
+            custom_load = yaml.safe_load(cf)['tests']
     except IOError:
         print 'Unable to open custom attributes file'
         raise
@@ -312,7 +312,7 @@ detailed_attributes = {}
 if args.detailed:
     try:
         with open(args.detailed, 'r') as yaml_loading:
-            detailed_attributes = yaml.load(yaml_loading)
+            detailed_attributes = yaml.safe_load(yaml_loading)
     except IOError:
         print 'Unable to open detailed results attribute file'
         raise
