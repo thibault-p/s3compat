@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 from xml.etree import ElementTree
 from collections import defaultdict, Counter
 from tabulate import tabulate
@@ -17,7 +17,7 @@ def dict_merge(a, b):
         return b
 
     result = deepcopy(a)
-    for k, v in b.iteritems():
+    for k, v in b.items():
         if k in result and isinstance(result[k], dict):
             result[k] = dict_merge(result[k], v)
         else:
@@ -83,44 +83,44 @@ def csv_report(results):
     writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
 
     writer.writeheader()
-    for _, row in results.iteritems():
+    for _, row in results.items():
         writer.writerow(row)
 
 
 def summary_report(results, detailed):
     success = True
     by_report_status = defaultdict(list)
-    for test, rec in results.iteritems():
+    for test, rec in results.items():
         by_report_status[rec.get('report')].append(rec)
 
     by_failure_message = Counter(r['message'] for t, r in
-                                 results.iteritems() if r['message'])
+                                 results.items() if r['message'])
 
     if not detailed:
         table = []
         for s in ('PASS', 'NEW_FAILURE', 'KNOWN_FAILURE', 'UNEXPECTED_PASS', 'SKIP'):
             table.append((s, len(by_report_status[s])))
 
-        print tabulate(table)
+        print(tabulate(table))
         print("TOTAL TESTS:   %d" % len(results))
-        print
-    print "10 most common failures:"
-    print tabulate(by_failure_message.most_common(10))
-    print
-    print "10 longest-running tests:"
-    print tabulate(
+        print()
+    print("10 most common failures:")
+    print(tabulate(by_failure_message.most_common(10)))
+    print()
+    print("10 longest-running tests:")
+    print(tabulate(
         (t, r['time']) for t, r in sorted(
             results.items(),
             key=lambda x: float(x[1]['time']),
-            reverse=True)[:10])
+            reverse=True)[:10]))
     for status in ('NEW_FAILURE', 'UNEXPECTED_PASS'):
         if not by_report_status[status]:
             continue
         success = False
-        print
-        print "%s:" % status
+        print()
+        print("%s:" % status)
         for test in by_report_status[status]:
-            print test['name']
+            print(test['name'])
     return success
 
 
@@ -229,7 +229,7 @@ def detailed_report_console(results, detailed_attributes, custom_attributes,
     table = [[v for i, v in enumerate(row)
              if (table[-1][i] if columns[i] is None
                  else columns[i])] for row in table]
-    print tabulate(table, headers="firstrow", tablefmt='simple')
+    print(tabulate(table, headers="firstrow", tablefmt='simple'))
 
 
 def detailed_report_wiki(results, detailed_attributes, custom_attributes, kfs,
@@ -240,10 +240,10 @@ def detailed_report_wiki(results, detailed_attributes, custom_attributes, kfs,
 
     table = [[v for i, v in enumerate(row) if columns[i]] for row in table]
 
-    print ('== Amazon S3 REST API Compatability using '
-           '[https://github.com/ceph/s3-tests Ceph s3-tests] ==')
-    print tabulate(table, headers="firstrow", tablefmt='mediawiki')
-    print "<references />"
+    print('== Amazon S3 REST API Compatability using '
+          '[https://github.com/ceph/s3-tests Ceph s3-tests] ==')
+    print(tabulate(table, headers="firstrow", tablefmt='mediawiki'))
+    print("<references />")
 
 
 parser = argparse.ArgumentParser()
@@ -269,7 +269,7 @@ for kf in args.known_failures:
     all_kfs = dict_merge(all_kfs, load_known_failures(kf))
 
 kfs = all_kfs.get('ceph_s3', {})
-for test, rec in results.iteritems():
+for test, rec in results.items():
     rec['report'] = 'PASS'
 
     if rec['result'] == 'SKIP':
@@ -296,7 +296,7 @@ if args.custom:
         with open(args.custom, 'r') as cf:
             custom_load = yaml.safe_load(cf)['tests']
     except IOError:
-        print 'Unable to open custom attributes file'
+        print('Unable to open custom attributes file')
         raise
     for test in custom_load:
         attrib_cat = custom_load[test]['category']
@@ -314,7 +314,7 @@ if args.detailed:
         with open(args.detailed, 'r') as yaml_loading:
             detailed_attributes = yaml.safe_load(yaml_loading)
     except IOError:
-        print 'Unable to open detailed results attribute file'
+        print('Unable to open detailed results attribute file')
         raise
 
 if args.custom or args.detailed:
