@@ -2,12 +2,11 @@ PyYAML
 nose >=1.0.0
 boto >=2.6.0
 boto3 >=1.0.0
-bunch >=1.0.0
+munch >=2.0.0
 gevent >=1.0
 isodate >=0.4.4
 requests
 pytz >=2011k
-ordereddict
 httplib2
 lxml
 tabulate
