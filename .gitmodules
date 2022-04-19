@@ -1,3 +1,3 @@
 [submodule "ceph-tests"]
 	path = ceph-tests
-	url = https://github.com/ceph/s3-tests
+	url = https://github.com/tipabu/s3-tests
